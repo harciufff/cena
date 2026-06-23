@@ -30,7 +30,7 @@ The three layers communicate via lightweight Python queues and shared objects; n
 Inspired by Karpathy’s *LLM‑as‑an‑OS* concept, the system stores its external context in plain markdown rather than a vector store. This design offers two key benefits on edge devices:
 
 * **Zero indexing latency** – writing to a text file is orders of magnitude faster than embedding generation and vector insertion, which is crucial when the device has limited GPU/CPU headroom.
-* **Token‑efficient retrieval** – downstream agents (e.g., OpenClaw or PicoClaw) can `grep` or stream‑read the markdown directly, avoiding the token‑overhead of a dense‑vector lookup.
+* **Token‑efficient retrieval** – downstream agents (e.g., OpenClaw) can `grep` or stream‑read the markdown directly, avoiding the token‑overhead of a dense‑vector lookup.
 
 `LiveContext.md` works as a short‑term “window” that always reflects the latest perception, while `PersistentContext.md` provides a durable audit trail for post‑hoc analysis, debugging, or long‑term memory.
 
@@ -40,7 +40,7 @@ Inspired by Karpathy’s *LLM‑as‑an‑OS* concept, the system stores its ext
 
 External agents read the markdown files natively:
 
-* **OpenClaw / PicoClaw** – mount the folder as a Graph‑RAG source. The agents treat each line as a knowledge node, allowing instant, up‑to‑date grounding for voice commands or UI actions.
+* **OpenClaw** – mount the folder as a Graph‑RAG source. The agents treat each line as a knowledge node, allowing instant, up‑to‑date grounding for voice commands or UI actions.
 * **CLI tools** – can `cat` or `tail -f` the live file to obtain the current world description without any additional API.
 
 Because the format is plain markdown, integration requires only a file‑watcher; no custom SDK or network service is needed, which aligns perfectly with edge‑first privacy constraints.
