@@ -56,7 +56,7 @@ Because the format is plain markdown, integration requires only a file‑watcher
 | Moondream‑2 (Metal) | ~150 ms per inference (called every 10s) | The VLM is the primary thermal hotspot; prolonged runs cause CPU‑GPU throttling after ~5 minutes.
 | File I/O (markdown) | < 5 ms per write | Negligible.
 
-**Limitations** – The current proof‑of‑concept is limited to a single‑device setup. For industrial‑scale deployments (continuous 24 h operation, multiple concurrent streams) the Moondream inference would benefit from a custom‑fine‑tuned model or a dedicated accelerator (e.g., Apple Max/Ultra chip with ≥ 48 GB memory) to avoid thermal throttling.
+**Limitations** – The current proof‑of‑concept is limited to a single‑device setup. For industrial‑scale deployments (continuous 24 h operation, multiple concurrent streams) the Moondream inference would benefit from a custom‑fine‑tuned model or a dedicated accelerator (e.g., Apple Max/Ultra chip) to avoid thermal throttling.
 
 ---
 
@@ -67,8 +67,8 @@ Because the format is plain markdown, integration requires only a file‑watcher
 3. **Dependencies** – `pip install -r requirements.txt`.
 4. **Environment variables** (see `.env.example`):
     * `HF_TOKEN` – HuggingFace access token. Required to securely download the **Moondream‑2** model weights from the HuggingFace Hub. To get one: Log into [HuggingFace](https://huggingface.co/) -> Settings -> Access Tokens -> Generate a new "Read" token.
-  * `MOONDREAM_API_KEY` – Required by the Moondream library to validate the runtime and suppress initialization warnings (inference remains 100% local on device). To get one: Register for a free account on the [Moondream Console](https://moondream.ai) and copy your free key from the dashboard.
-   * `OBSIDIAN_VAULT_PATH` – absolute path to the folder where `LiveContext.md` and `PersistentContext.md` are stored.
+    * `MOONDREAM_API_KEY` – Required by the Moondream library to validate the runtime and suppress initialization warnings (inference remains 100% local on device). To get one: Register for a free account on the [Moondream Console](https://moondream.ai) and copy your free key from the dashboard.
+    * `OBSIDIAN_VAULT_PATH` – absolute path to the folder where `LiveContext.md` and `PersistentContext.md` are stored.
 5. **Model files** – YOLO‑World CoreML package and MediaPipe hand‑landmarker task will be downloaded automatically on first run (requires internet).
 6. **License** – The code is released under **AGPL‑v3**. See `LICENSE` for full terms.
 7. **Run the application** – launch the project with `python3 main.py`.
