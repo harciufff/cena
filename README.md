@@ -66,8 +66,8 @@ Because the format is plain markdown, integration requires only a file‑watcher
 2. **Virtual environment** – `python -m venv venv && source venv/bin/activate`.
 3. **Dependencies** – `pip install -r requirements.txt`.
 4. **Environment variables** (see `.env.example`):
-   * `HF_TOKEN` – HuggingFace access token for Moondream‑2 weights.
-   * `MOONDREAM_API_KEY` – Required by the Moondream library to suppress initialization warnings, though inference remains 100%   local on device.
+    * `HF_TOKEN` – HuggingFace access token. Required to securely download the **Moondream‑2** model weights from the HuggingFace Hub. To get one: Log into [HuggingFace](https://huggingface.co/) -> Settings -> Access Tokens -> Generate a new "Read" token.
+  * `MOONDREAM_API_KEY` – Required by the Moondream library to validate the runtime and suppress initialization warnings (inference remains 100% local on device). To get one: Register for a free account on the [Moondream Console](https://moondream.ai) and copy your free key from the dashboard.
    * `OBSIDIAN_VAULT_PATH` – absolute path to the folder where `LiveContext.md` and `PersistentContext.md` are stored.
 5. **Model files** – YOLO‑World CoreML package and MediaPipe hand‑landmarker task will be downloaded automatically on first run (requires internet).
 6. **License** – The code is released under **AGPL‑v3**. See `LICENSE` for full terms.
@@ -77,7 +77,7 @@ Because the format is plain markdown, integration requires only a file‑watcher
 
 ## Experimental Disclaimer
 
-This repository is a **very experimental proof‑of‑concept** built by a single developer. It is **not yet production‑ready** for autonomous manual‑task guidance or safety‑critical applications. The architecture, performance characteristics, and hardware recommendations are subject to change as the project evolves.
+This repository is a **very experimental proof‑of‑concept** built by a single 16-year-old developer. It is **not yet production‑ready**, nor is it safe or ready for autonomous manual‑task guidance or safety‑critical applications. The architecture, performance characteristics, and hardware recommendations are subject to change as the project evolves.
 
 ---
 
