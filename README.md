@@ -63,21 +63,26 @@ Because the format is plain markdown, integration requires only a file‑watcher
 ## Installation & Requirements
 
 1. **Python 3.10+** (tested on 3.11).
-2. **Virtual environment** – `python -m venv venv && source venv/bin/activate`.
-3. **Dependencies** – `pip install -r requirements.txt`.
-4. **Environment variables** (see `.env.example`):
+2. **Clone the repository** – Run `git clone https://github.com/harciufff/cena.git && cd cena`.
+3. **Virtual environment** – `python -m venv venv && source venv/bin/activate`.
+4. **Dependencies** – `pip install -r requirements.txt`.
+5. **Environment variables** (see `.env.example`):
     * `HF_TOKEN` – HuggingFace access token. Required to securely download the **Moondream‑2** model weights from the HuggingFace Hub. To get one: Log into [HuggingFace](https://huggingface.co/) -> Settings -> Access Tokens -> Generate a new "Read" token.
     * `MOONDREAM_API_KEY` – Required by the Moondream library to validate the runtime and suppress initialization warnings (inference remains 100% local on device). To get one: Register for a free account on the [Moondream Console](https://moondream.ai) and copy your free key from the dashboard.
     * `OBSIDIAN_VAULT_PATH` – absolute path to the folder where `LiveContext.md` and `PersistentContext.md` are stored.
-5. **Model files** – YOLO‑World CoreML package and MediaPipe hand‑landmarker task will be downloaded automatically on first run (requires internet).
-6. **License** – The code is released under **AGPL‑v3**. See `LICENSE` for full terms.
-7. **Run the application** – launch the project with `python3 main.py`.
+6. **Model files** – YOLO‑World CoreML package and MediaPipe hand‑landmarker task will be downloaded automatically on first run (requires internet).
+7. **License** – The code is released under **AGPL‑v3**. See `LICENSE` for full terms.
+8. **Run the application** – launch the project with `python3 main.py`.
 
 ---
 
 ## Experimental Disclaimer
 
-This repository is a **very experimental proof‑of‑concept** built by a single 16-year-old developer. It is **not yet production‑ready**, nor is it safe or ready for autonomous manual‑task guidance or safety‑critical applications. The architecture, performance characteristics, and hardware recommendations are subject to change as the project evolves.
+This repository is an **experimental proof‑of‑concept** built by a single 16-year-old developer. 
+
+* **Software Stability:** The core multi-threaded asynchronous architecture is highly stable, optimized, and does not crash. The pipeline successfully isolates heavy AI models across different execution threads without memory leaks or deadlocks.
+* **Guidance Limitations:** While the code runs reliably, the system is **not yet ready for autonomous, real-time manual-task guidance** or safety-critical applications. Due to current edge VLM latency (0.1 FPS), the semantic understanding layer is too slow to provide immediate, split-second corrections while you perform manual tasks. It is designed to track state evolution, not to act as an instantaneous live instructor.
+* **Production Status:** The architecture, performance characteristics, and software logic will continuously evolve over time through ongoing optimization passes (such as conditional VLM inference based on motion cues). While the system is designed to naturally scale as edge-AI hardware and 1B-parameter vision models mature, its roadmap relies heavily on active software-level refinement, meaning performance metrics are subject to change regardless of external model updates.
 
 ---
 
